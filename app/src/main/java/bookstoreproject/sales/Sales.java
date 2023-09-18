@@ -1,14 +1,15 @@
 package bookstoreproject.sales;
 
-import bookstoreproject.inventory.*;
+import bookstoreproject.inventory.InventoryArray;
 import bookstoreproject.pricing.*;
+import bookstoreproject.product.*;
 
 public class Sales {
 
-    private Inventory inventory;
+    private InventoryArray inventory;
     private Pricing pricing;
 
-    public Sales(Inventory inventory, Pricing pricing) {
+    public Sales(InventoryArray inventory, Pricing pricing) {
         this.inventory = inventory;
         this.pricing = pricing;
     }

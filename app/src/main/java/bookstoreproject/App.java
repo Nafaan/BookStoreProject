@@ -3,8 +3,9 @@
  */
 package bookstoreproject;
 
-import bookstoreproject.inventory.*;
+import bookstoreproject.inventory.InventoryArray;
 import bookstoreproject.pricing.*;
+import bookstoreproject.product.*;
 import bookstoreproject.sales.*;
 
 public class App {
@@ -15,7 +16,7 @@ public class App {
     public static void main(String[] args) {
         System.out.println(new App().makeAnnouncement());
         // Initialize the Inventory, Pricing, and Sales classes
-        Inventory inventory = new Inventory();
+        InventoryArray inventory = new InventoryArray();
         Pricing pricing = new Pricing();
         Sales sales = new Sales(inventory, pricing);
 
