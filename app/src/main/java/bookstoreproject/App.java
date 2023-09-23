@@ -17,17 +17,20 @@ public class App {
         System.out.println(new App().makeAnnouncement());
         // Initialize the Inventory, Pricing, and Sales classes
         InventoryArray inventory = new InventoryArray();
-        Pricing pricing = new Pricing();
-        Sales sales = new Sales(inventory, pricing);
+        BookPricing bookPricing = new BookPricing(10);
+        StationaryPricing stationaryPricing = new StationaryPricing(2);
+        PencilPricing pencilPricing = new PencilPricing(1);
+        PenPricing penPricing = new PenPricing(1.5);
+        Sales sales = new Sales(inventory);
 
           // Header
           System.out.printf("%-15s %-15s %-15s%n", "Product", "Availability", "Price");
 
           // Display initial inventory and pricing for demonstration
-          System.out.printf("%-15s %-15s %-15.2f%n", "Books", inventory.isAvailable("Book", 1), pricing.getPrice("Book"));
-          System.out.printf("%-15s %-15s %-15.2f%n", "Stationary", inventory.isAvailable("Stationary", 1), pricing.getPrice("Stationary"));
-          System.out.printf("%-15s %-15s %-15.2f%n", "Pencils", inventory.isAvailable("Pencil", 1), pricing.getPrice("Pencil"));
-          System.out.printf("%-15s %-15s %-15.2f%n", "Pens", inventory.isAvailable("Pen", 1), pricing.getPrice("Pen"));
+          System.out.printf("%-15s %-15s %-15.2f%n", "Books", inventory.isAvailable("Book", 1), bookPricing.getPrice());
+          System.out.printf("%-15s %-15s %-15.2f%n", "Stationary", inventory.isAvailable("Stationary", 1), stationaryPricing.getPrice());
+          System.out.printf("%-15s %-15s %-15.2f%n", "Pencils", inventory.isAvailable("Pencil", 1), pencilPricing.getPrice());
+          System.out.printf("%-15s %-15s %-15.2f%n", "Pens", inventory.isAvailable("Pen", 1), penPricing.getPrice());
   
           // Perform some sales transactions and show results
           System.out.println("\nSales Transactions:");

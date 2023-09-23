@@ -9,9 +9,8 @@ public class Sales {
     private InventoryArray inventory;
     private Pricing pricing;
 
-    public Sales(InventoryArray inventory, Pricing pricing) {
+    public Sales(InventoryArray inventory) {
         this.inventory = inventory;
-        this.pricing = pricing;
     }
 
     public boolean makeSale(String productType, int quantity) {
