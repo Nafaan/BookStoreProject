@@ -2,19 +2,17 @@ package bookstoreproject.sales;
 
 import bookstoreproject.inventory.InventoryArray;
 import bookstoreproject.pricing.*;
-import bookstoreproject.product.*;
 
 public class Sales {
 
     private InventoryArray inventory;
-    private Pricing pricing;
 
     public Sales(InventoryArray inventory) {
         this.inventory = inventory;
     }
 
-    public boolean makeSale(String productType, int quantity) {
-        double price = pricing.getPrice(productType);
+    public boolean makeSale(Pricing pricing, String productType, int quantity) {
+        double price = pricing.getPrice();
         boolean isAvailable = inventory.isAvailable(productType, quantity);
 
         if (isAvailable) {
