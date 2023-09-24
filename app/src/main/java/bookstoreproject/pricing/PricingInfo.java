@@ -11,7 +11,7 @@ public class PricingInfo {
         return(price);
     }
 
-    public void setQuantity(int price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 }
