@@ -1,9 +1,9 @@
 package bookstoreproject.pricing;
 
-public class Pricing {
+public class PricingInfo {
     private double price;
 
-    public Pricing(double price) {
+    public PricingInfo(double price) {
         this.price = price;
     }
     

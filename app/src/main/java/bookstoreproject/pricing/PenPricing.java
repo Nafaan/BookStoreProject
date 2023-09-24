@@ -1,6 +1,6 @@
 package bookstoreproject.pricing;
 
-public class PenPricing extends Pricing {
+public class PenPricing extends PricingInfo {
     private double price;
 
     public PenPricing(double price) {

@@ -1,9 +1,9 @@
 package bookstoreproject.inventory;
 
-public class Quantity {
+public class QuantityInfo {
     private int quantity;
 
-    public Quantity(int quantity) {
+    public QuantityInfo(int quantity) {
         this.quantity = quantity;
     }
 
