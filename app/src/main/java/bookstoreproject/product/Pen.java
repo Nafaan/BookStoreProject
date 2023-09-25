@@ -1,8 +1,8 @@
 package bookstoreproject.product;
 
 public class Pen extends Product {
-    public Pen(int quantity) {
-        super(quantity);
+    public Pen(int quantity, double pricing) {
+        super(quantity, pricing);
     }
 }
 

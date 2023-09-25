@@ -1,17 +1,23 @@
 package bookstoreproject.product;
 
+import bookstoreproject.inventory.*;
+import bookstoreproject.pricing.*;
+
 public abstract class Product {
-    private int quantity;
+    private QuantityInfo quantityInfo;
+    private PricingInfo pricingInfo;
+    // private Description productDescription;
 
-    public Product(int quantity) {
-        this.quantity = quantity;
+    public Product(int quantity, double pricing) {
+        this.quantityInfo = new QuantityInfo(quantity);
+        this.pricingInfo = new PricingInfo(pricing);
     }
 
-    public int getQuantity() {
-        return quantity;
+    public QuantityInfo getQuantityInfo(){ 
+        return this.quantityInfo;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public PricingInfo getPricingInfo(){ 
+        return this.pricingInfo;
     }
 }
