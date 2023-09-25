@@ -5,18 +5,18 @@ import bookstoreproject.product.*;
 
 public class Sales {
 
-    private InventoryArray inventory;
+    private Inventory inventory;
 
-    public Sales(InventoryArray inventory) {
+    public Sales(Inventory inventory) {
         this.inventory = inventory;
     }
 
-    public boolean makeSale(Product product, String productType, int quantity) {
+    public boolean makeSale(Product product, int quantity) {
         double price = product.getPricingInfo().getPrice();
-        boolean isAvailable = inventory.isAvailable(productType, quantity);
+        boolean isAvailable = inventory.isAvailable(product, quantity);
 
         if (isAvailable) {
-            inventory.decrementStock(productType, quantity);
+            inventory.decrementStock(product, quantity);
             
             // Update Sales Counter (assuming it's a static class)
             SalesCounter.updateTotalSales(price * quantity);
