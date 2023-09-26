@@ -2,6 +2,7 @@ package bookstoreproject.product;
 
 import bookstoreproject.inventory.*;
 import bookstoreproject.pricing.*;
+import bookstoreproject.quantity.QuantityInfo;
 
 public abstract class Product {
     private QuantityInfo quantityInfo;

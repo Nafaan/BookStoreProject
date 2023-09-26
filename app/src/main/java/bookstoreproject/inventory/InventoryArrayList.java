@@ -1,20 +1,19 @@
 package bookstoreproject.inventory;
 
 import bookstoreproject.product.*;
+import bookstoreproject.pricing.*;
+import bookstoreproject.quantity.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class InventoryArrayList {
-    private List<Product> products;
+    private ArrayList<InventoryItem> items;
 
     public InventoryArrayList() {
         // Initialize the inventory with some products
-        products = new ArrayList<>();
-        products.add(new Book(10));
-        products.add(new Stationary(20));
-        products.add(new Pencil(30));
-        products.add(new Pen(15));
+        items = new ArrayList<InventoryItem>();
+
     }
 
     public boolean isAvailable(Product requestedProduct, int requiredQuantity) {

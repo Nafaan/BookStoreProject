@@ -1,4 +1,4 @@
-package bookstoreproject.inventory;
+package bookstoreproject.quantity;
 
 public class QuantityInfo {
     private int quantity;
