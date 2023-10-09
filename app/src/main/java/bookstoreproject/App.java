@@ -15,16 +15,11 @@ public class App {
         System.out.println(new App().makeAnnouncement());
         // Initialize the Inventory and Sales classes
         InventoryMgnt inventory_mgnt = new InventoryMgnt();
-        InventoryItem bookItem = new InventoryItem("Book", 20, 14);
-        inventory_mgnt.addItem(bookItem.getProductInfo(),bookItem);
-        InventoryItem penItem = new InventoryItem("Pen", 20, 14);
-        inventory_mgnt.addItem(bookItem.getProductInfo(),bookItem);
-        InventoryItem pencilItem = new InventoryItem("Pencil", 20, 14);
-        inventory_mgnt.addItem(bookItem.getProductInfo(),bookItem);
-        InventoryItem stationaryItem = new InventoryItem("Stationary", 20, 14);
-        inventory_mgnt.addItem(bookItem.getProductInfo(),bookItem);
-
-
+        InventoryItem bookItem = InventoryItem.createInventoryItem(inventory_mgnt,"Book", 20, 14.0);
+        InventoryItem penItem = InventoryItem.createInventoryItem(inventory_mgnt,"Pen", 20, 2.0);
+        InventoryItem pencilItem = InventoryItem.createInventoryItem(inventory_mgnt,"Pencil", 20, 1.0);
+        InventoryItem stationaryItem = InventoryItem.createInventoryItem(inventory_mgnt,"Stationary", 20, 4.0);
+    
         Sales sales = new Sales(inventory_mgnt);
 
           // Header

@@ -26,5 +26,11 @@ public  class InventoryItem {
     public PricingInfo getPricingInfo(){
         return pricingInfo;
     }
+
+    public static InventoryItem createInventoryItem(InventoryMgnt manager, String name, int quantity, double price) {
+        InventoryItem item = new InventoryItem(name, quantity, price);
+        manager.addItem(item.getProductInfo(),item);
+        return item;
+    }
    
 }
