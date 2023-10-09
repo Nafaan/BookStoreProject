@@ -2,9 +2,10 @@ package bookstoreproject.io;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ItemEntry throws IOException {
+public class ItemEntry {
     private String product;
     private int quantity;
     private double price;
@@ -15,19 +16,21 @@ public class ItemEntry throws IOException {
         this.price = price;
     }
     
-    public static ItemEntry readEntryFromFile(String filename) throws IOException {
-        try (Scanner scanner = new Scanner(new File(filename))) {
-            
-            if (!scanner.hasNext()) {
-                throw new IOException("File is empty!");
+    public static ArrayList<ItemEntry> readEntriesFromFile(String filename) {
+        ArrayList<ItemEntry> entries = new ArrayList<>();
+        
+        try  {
+            Scanner scanner = new Scanner(new File(filename));
+            while(scanner.hasNext()) {
+                String product = scanner.next();
+                int quantity = scanner.nextInt();
+                double price = scanner.nextDouble();
+                entries.add(new ItemEntry(product, quantity, price));
             }
-
-            String product = scanner.next();
-            int quantity = scanner.nextInt();
-            double price = scanner.nextDouble();
-
-            return new ItemEntry(product, quantity, price);
-        }
+        } catch (IOException e) {
+            System.err.println("Error reading from the file: " + e.getMessage());
+        } 
+        return entries;
     }
 
     public String getProduct() {
