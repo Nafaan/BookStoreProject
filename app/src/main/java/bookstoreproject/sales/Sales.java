@@ -11,7 +11,7 @@ public class Sales {
         this.inventory = inventory;
     }
 
-    public boolean makeSale(Product product, int quantity) {
+    public boolean makeSale(ProductInfo product, int quantity) {
         double price = product.getPricingInfo().getPrice();
         boolean isAvailable = inventory.isAvailable(product, quantity);
 

@@ -16,8 +16,8 @@ public class InventoryArrayList {
 
     }
 
-    public boolean isAvailable(Product requestedProduct, int requiredQuantity) {
-        for (Product product : products) {
+    public boolean isAvailable(ProductInfo requestedProduct, int requiredQuantity) {
+        for (ProductInfo product : products) {
             if (product.getClass().equals(requestedProduct.getClass())) {
                 return product.getQuantity() >= requiredQuantity;
             }
@@ -25,8 +25,8 @@ public class InventoryArrayList {
         return false;
     }
 
-    public void decrementStock(Product requestedProduct, int decrementBy) {
-        for (Product product : products) {
+    public void decrementStock(ProductInfo requestedProduct, int decrementBy) {
+        for (ProductInfo product : products) {
             if (product.getClass().equals(requestedProduct.getClass())) {
                 int newQuantity = product.getQuantity() - decrementBy;
                 if (newQuantity >= 0) {

@@ -16,10 +16,10 @@ public class App {
         System.out.println(new App().makeAnnouncement());
         // Initialize the Inventory and Sales classes
         Inventory inventory = new Inventory();
-        Book book = new Book(10,10.0);
-        Stationary stationary = new Stationary(20,5.0);
-        Pencil pencil = new Pencil(10,1.0);
-        Pen pen = new Pen(20,1.5);
+        BookInfo book = new BookInfo();
+        StationaryInfo stationary = new StationaryInfo();
+        PencilInfo pencil = new PencilInfo();
+        PenInfo pen = new PenInfo();
         Sales sales = new Sales(inventory);
 
           // Header
