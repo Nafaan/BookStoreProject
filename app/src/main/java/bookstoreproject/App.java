@@ -15,18 +15,17 @@ public class App {
     public static void main(String[] args) {
         System.out.println(new App().makeAnnouncement());
         // Initialize the Inventory and Sales classes
-        InventoryMgnt inventory = new InventoryMgnt();
-        BookInfo book = new BookInfo();
-        StationaryInfo stationary = new StationaryInfo();
-        PencilInfo pencil = new PencilInfo();
-        PenInfo pen = new PenInfo();
-        Sales sales = new Sales(inventory);
+        InventoryMgnt inventory_mgnt = new InventoryMgnt();
+        InventoryItem bookItem = new InventoryItem("Book", 20, 14);
+        inventory_mgnt.addItem(bookItem.getProductInfo(),bookItem);
+
+        Sales sales = new Sales(inventory_mgnt);
 
           // Header
           System.out.printf("%-15s %-15s %-15s%n", "Product", "Availability", "Price");
 
           // Display initial inventory and pricing for demonstration
-          System.out.printf("%-15s %-15s %-15.2f%n", "Books", inventory.isAvailable(book, 1), book.getPricingInfo().getPrice());
+          System.out.printf("%-15s %-15s %-15.2f%n", "Books", inventory_mgnt.isAvailable(bookItem, 1), bookItem.getPricingInfo().getPrice());
           System.out.printf("%-15s %-15s %-15.2f%n", "Stationary", inventory.isAvailable(stationary, 1), stationary.getPricingInfo().getPrice());
           System.out.printf("%-15s %-15s %-15.2f%n", "Pencils", inventory.isAvailable(pencil, 1), pencil.getPricingInfo().getPrice());
           System.out.printf("%-15s %-15s %-15.2f%n", "Pens", inventory.isAvailable(pen, 1), pen.getPricingInfo().getPrice());

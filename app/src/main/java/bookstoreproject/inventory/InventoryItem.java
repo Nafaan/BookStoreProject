@@ -4,8 +4,8 @@ import bookstoreproject.product.*;
 import bookstoreproject.pricing.*;
 import bookstoreproject.quantity.*;
 
-public abstract class InventoryItem {
-    private ProductInfo productInfo = new ProductInfo() ;
+public  class InventoryItem {
+    private ProductInfo productInfo = new ProductInfo();
     private QuantityInfo quantityInfo = new QuantityInfo();
     private PricingInfo pricingInfo = new PricingInfo();
 
