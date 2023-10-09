@@ -32,21 +32,17 @@ public class InventoryMgnt {
         this.inventory.remove(productInfo);
     }    
 
-    // Check if the required quantity of an InventoryItem is available
+    // Check if the requested quantity of an item is available
     public boolean isAvailable(InventoryItem item, int requiredQuantity) {
         return item.getQuantityInfo().getQuantity() >= requiredQuantity;
     }
 
 
-    // Decrement the quantity of an InventoryItem by a given amount
+    // Decrement the quantity of an item by a given amount
     public void decrementQuantity(InventoryItem item, int decrementBy) {
-        // Get the current quantity
+        // Get the current quantity, set the new quantity and check if 
         int currentQuantity = item.getQuantityInfo().getQuantity();
-
-        // Calculate the new quantity
         int newQuantity = currentQuantity - decrementBy;
-
-        // Ensure the new quantity is not negative
         newQuantity = Math.max(newQuantity, 0);
 
         // Update the quantity

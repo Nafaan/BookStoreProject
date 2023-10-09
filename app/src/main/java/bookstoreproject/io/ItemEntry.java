@@ -24,9 +24,6 @@ public class ItemEntry {
                 String line = scanner.nextLine();
                 String[] parts = line.split(",");
                 
-                if (parts.length != 3) {
-                    throw new IOException("Invalid entry format in file!");
-                }
                 
                 String product = parts[0].trim();
                 if (product.startsWith("\"") && product.endsWith("\"")) {
