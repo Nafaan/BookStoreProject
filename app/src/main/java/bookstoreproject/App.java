@@ -3,8 +3,11 @@
  */
 package bookstoreproject;
 
+import java.util.ArrayList;
+
 import bookstoreproject.inventory.*;
 import bookstoreproject.sales.*;
+import bookstoreproject.io.*;
 
 public class App {
     public String makeAnnouncement() {
@@ -19,6 +22,15 @@ public class App {
         InventoryItem penItem = InventoryItem.createInventoryItem(inventory_mgnt,"Pen", 20, 2.0);
         InventoryItem pencilItem = InventoryItem.createInventoryItem(inventory_mgnt,"Pencil", 20, 1.0);
         InventoryItem stationaryItem = InventoryItem.createInventoryItem(inventory_mgnt,"Stationary", 20, 4.0);
+
+        ArrayList<ItemEntry> entries = ItemEntry.readEntriesFromFile("inventory_items.txt");
+            
+        for(ItemEntry entry : entries) {
+            System.out.println("Product: " + entry.getProduct());
+            System.out.println("Quantity: " + entry.getQuantity());
+            System.out.println("Price: " + entry.getPrice());
+            System.out.println("-----------------------");
+        }
     
         Sales sales = new Sales(inventory_mgnt);
 
