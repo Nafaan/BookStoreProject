@@ -2,8 +2,6 @@ package bookstoreproject.inventory;
 
 import java.util.HashMap;
 import bookstoreproject.product.*;
-import bookstoreproject.pricing.*;
-import bookstoreproject.quantity.*;
 
 public class InventoryMgnt {
 
@@ -32,15 +30,13 @@ public class InventoryMgnt {
     // Remove an item from the inventory based on its ProductInfo
     public void removeItem(ProductInfo productInfo) {
         this.inventory.remove(productInfo);
-    }    public boolean isAvailable(ProductInfo product, int quantity) {
-        return product.getQuantityInfo().getQuantity() >= quantity;
-    }
- 
+    }    
 
     // Check if the required quantity of an InventoryItem is available
     public boolean isAvailable(InventoryItem item, int requiredQuantity) {
         return item.getQuantityInfo().getQuantity() >= requiredQuantity;
     }
+
 
     // Decrement the quantity of an InventoryItem by a given amount
     public void decrementQuantity(InventoryItem item, int decrementBy) {
