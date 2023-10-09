@@ -15,7 +15,7 @@ public class App {
     public static void main(String[] args) {
         System.out.println(new App().makeAnnouncement());
         // Initialize the Inventory and Sales classes
-        Inventory inventory = new Inventory();
+        InventoryMgnt inventory = new InventoryMgnt();
         BookInfo book = new BookInfo();
         StationaryInfo stationary = new StationaryInfo();
         PencilInfo pencil = new PencilInfo();

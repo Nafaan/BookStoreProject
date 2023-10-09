@@ -1,14 +1,14 @@
 package bookstoreproject.product;
 
 
-public abstract class ProductInfo {
-
+public class ProductInfo {
     private String name;
 
     public ProductInfo(String name) {
         this.name = name;
     }
 
-    public ProductInfo geProductInfo(){
+    public String getProductInfoName() {
+        return name;
     }
 }

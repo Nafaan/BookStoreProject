@@ -32,8 +32,29 @@ public class InventoryMgnt {
     // Remove an item from the inventory based on its ProductInfo
     public void removeItem(ProductInfo productInfo) {
         this.inventory.remove(productInfo);
+    }    public boolean isAvailable(ProductInfo product, int quantity) {
+        return product.getQuantityInfo().getQuantity() >= quantity;
+    }
+ 
+
+    // Check if the required quantity of an InventoryItem is available
+    public boolean isAvailable(InventoryItem item, int requiredQuantity) {
+        return item.getQuantityInfo().getQuantity() >= requiredQuantity;
     }
 
-    // Possibly more methods depending on what you'd like to achieve with the inventory management system.
+    // Decrement the quantity of an InventoryItem by a given amount
+    public void decrementQuantity(InventoryItem item, int decrementBy) {
+        // Get the current quantity
+        int currentQuantity = item.getQuantityInfo().getQuantity();
+
+        // Calculate the new quantity
+        int newQuantity = currentQuantity - decrementBy;
+
+        // Ensure the new quantity is not negative
+        newQuantity = Math.max(newQuantity, 0);
+
+        // Update the quantity
+        item.getQuantityInfo().setQuantity(newQuantity);
+    }
 }
 

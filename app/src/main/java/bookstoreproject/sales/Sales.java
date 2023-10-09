@@ -5,9 +5,9 @@ import bookstoreproject.product.*;
 
 public class Sales {
 
-    private Inventory inventory;
+    private InventoryMgnt inventory;
 
-    public Sales(Inventory inventory) {
+    public Sales(InventoryMgnt inventory) {
         this.inventory = inventory;
     }
 
