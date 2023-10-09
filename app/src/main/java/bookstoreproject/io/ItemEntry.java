@@ -19,15 +19,25 @@ public class ItemEntry {
     public static ArrayList<ItemEntry> readEntriesFromFile(String filename) {
         ArrayList<ItemEntry> entries = new ArrayList<>();
         
-        try  {
-            Scanner scanner = new Scanner(new File(filename));
-            while(scanner.hasNext()) {
-                String product = scanner.next();
-                int quantity = scanner.nextInt();
-                double price = scanner.nextDouble();
+        try (Scanner scanner = new Scanner(new File(filename))) {
+            while(scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] parts = line.split(",");
+                
+                if (parts.length != 3) {
+                    throw new IOException("Invalid entry format in file!");
+                }
+                
+                String product = parts[0].trim();
+                if (product.startsWith("\"") && product.endsWith("\"")) {
+                    product = product.substring(1, product.length() - 1);
+                }
+    
+                int quantity = Integer.parseInt(parts[1].trim());
+                double price = Double.parseDouble(parts[2].trim());
                 entries.add(new ItemEntry(product, quantity, price));
             }
-        } catch (IOException e) {
+        }catch (IOException e) {
             System.err.println("Error reading from the file: " + e.getMessage());
         } 
         return entries;
