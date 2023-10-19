@@ -26,10 +26,7 @@ public class App {
         ArrayList<ItemEntry> entries = ItemEntry.readEntriesFromFile("inventory_items.txt");
             
         for(ItemEntry entry : entries) {
-            System.out.println("Product: " + entry.getProduct());
-            System.out.println("Quantity: " + entry.getQuantity());
-            System.out.println("Price: " + entry.getPrice());
-            System.out.println("-----------------------");
+            InventoryItem newItem = InventoryItem.createInventoryItem(inventory_mgnt, entry.getProduct(), entry.getQuantity(), entry.getPrice());
         }
     
         Sales sales = new Sales(inventory_mgnt);
