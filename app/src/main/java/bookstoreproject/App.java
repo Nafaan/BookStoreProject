@@ -4,10 +4,12 @@
 package bookstoreproject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import bookstoreproject.inventory.*;
 import bookstoreproject.sales.*;
 import bookstoreproject.io.*;
+import bookstoreproject.product.ProductInfo;
 
 public class App {
     public String makeAnnouncement() {
@@ -26,9 +28,17 @@ public class App {
         ArrayList<ItemEntry> entries = ItemEntry.readEntriesFromFile("inventory_items.txt");
             
         for(ItemEntry entry : entries) {
-            InventoryItem newItem = InventoryItem.createInventoryItem(inventory_mgnt, entry.getProduct(), entry.getQuantity(), entry.getPrice());
+            InventoryItem.createInventoryItem(inventory_mgnt, entry.getProduct(), entry.getQuantity(), entry.getPrice());
         }
-    
+
+        HashMap<String, ProductInfo> productInfoMap = inventory_mgnt.getProductInfoMap();
+
+        for(String product : productInfoMap.keySet()){
+            InventoryItem item = inventory_mgnt.getItem(productInfoMap.get(product));
+            System.out.printf("%-15s %-15s %-15s%n", product, inventory_mgnt.isAvailable(item, 1));
+            System.out.println(item.getPricingInfo().getPrice());
+        }
+
         Sales sales = new Sales(inventory_mgnt);
 
           // Header

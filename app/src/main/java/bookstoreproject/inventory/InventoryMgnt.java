@@ -7,16 +7,18 @@ public class InventoryMgnt {
 
     // HashMap to store inventory items
     private HashMap<ProductInfo, InventoryItem> inventory;
-    private HashMap<String, ProductInfo> newInventory;
+    private HashMap<String, ProductInfo> productInfoMap;
 
     public InventoryMgnt() {
         this.inventory = new HashMap<>();
     }
 
-    public HashMap<String, ProductInfo> getProductInfoMap(ProductInfo info) {
-        newInventory.put(info.getProductInfoName(), info);
-        return newInventory;
+    public HashMap <String, ProductInfo> getProductInfoMap() {
+        productInfoMap = new HashMap<>();
+        
+        return productInfoMap;
     }
+    
     // Add an item to the inventory
     public void addItem(ProductInfo productInfo, InventoryItem item) {
         this.inventory.put(productInfo, item);
