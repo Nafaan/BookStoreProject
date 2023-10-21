@@ -15,7 +15,9 @@ public class InventoryMgnt {
 
     public HashMap <String, ProductInfo> getProductInfoMap() {
         productInfoMap = new HashMap<>();
-        
+        for(ProductInfo info : inventory.keySet()) {
+            productInfoMap.put(info.getProductInfoName(), info);
+        }
         return productInfoMap;
     }
     

@@ -31,25 +31,19 @@ public class App {
             InventoryItem.createInventoryItem(inventory_mgnt, entry.getProduct(), entry.getQuantity(), entry.getPrice());
         }
 
-        HashMap<String, ProductInfo> productInfoMap = inventory_mgnt.getProductInfoMap();
-
-        for(String product : productInfoMap.keySet()){
-            InventoryItem item = inventory_mgnt.getItem(productInfoMap.get(product));
-            System.out.printf("%-15s %-15s %-15s%n", product, inventory_mgnt.isAvailable(item, 1));
-            System.out.println(item.getPricingInfo().getPrice());
-        }
-
         Sales sales = new Sales(inventory_mgnt);
 
           // Header
           System.out.printf("%-15s %-15s %-15s%n", "Product", "Availability", "Price");
+        
+          HashMap<String, ProductInfo> productInfoMap = inventory_mgnt.getProductInfoMap();
 
-          // Display initial inventory and pricing for demonstration
-          System.out.printf("%-15s %-15s %-15.2f%n", "Books", inventory_mgnt.isAvailable(bookItem, 1), bookItem.getPricingInfo().getPrice());
-          System.out.printf("%-15s %-15s %-15.2f%n", "Stationary", inventory_mgnt.isAvailable(stationaryItem, 1), stationaryItem.getPricingInfo().getPrice());
-          System.out.printf("%-15s %-15s %-15.2f%n", "Pencils", inventory_mgnt.isAvailable(pencilItem, 1), pencilItem.getPricingInfo().getPrice());
-          System.out.printf("%-15s %-15s %-15.2f%n", "Pens", inventory_mgnt.isAvailable(penItem, 1), penItem.getPricingInfo().getPrice());
-  
+          for(String product : productInfoMap.keySet()){
+              InventoryItem item = inventory_mgnt.getItem(productInfoMap.get(product));
+              System.out.printf("%-15s %-15s %-15s%n", product, inventory_mgnt.isAvailable(item, 1));
+              System.out.println(item.getPricingInfo().getPrice());
+          }
+          
           // Perform some sales transactions and show results
           System.out.println("\nSales Transactions:");
           boolean bookSale = sales.makeSale(bookItem, 2);
