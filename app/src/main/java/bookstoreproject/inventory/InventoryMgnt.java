@@ -48,12 +48,14 @@ public class InventoryMgnt {
 
 
     // Decrement the quantity of an item by a given amount
-    public void decrementQuantity(InventoryItem item, int decrementBy) {
+    public void decrementQuantity(InventoryItem item, int decrementBy) throws ArithmeticException {
         // Get the current quantity, set the new quantity and check if 
         int currentQuantity = item.getQuantityInfo().getQuantity();
         int newQuantity = currentQuantity - decrementBy;
         newQuantity = Math.max(newQuantity, 0);
-
+        if(newQuantity < 0) {
+            throw new ArithmeticException("Cannot have negative quantity");
+        }
         // Update the quantity
         item.getQuantityInfo().setQuantity(newQuantity);
     }

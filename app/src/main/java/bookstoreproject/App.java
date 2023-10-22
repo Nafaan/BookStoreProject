@@ -24,11 +24,18 @@ public class App {
         InventoryItem penItem = InventoryItem.createInventoryItem(inventory_mgnt,"Pen", 20, 2.0);
         InventoryItem pencilItem = InventoryItem.createInventoryItem(inventory_mgnt,"Pencil", 20, 1.0);
         InventoryItem stationaryItem = InventoryItem.createInventoryItem(inventory_mgnt,"Stationary", 20, 4.0);
-
-        ArrayList<ItemEntry> entries = ItemEntry.readEntriesFromFile("inventory_items.txt");
-            
-        for(ItemEntry entry : entries) {
-            InventoryItem.createInventoryItem(inventory_mgnt, entry.getProduct(), entry.getQuantity(), entry.getPrice());
+        
+        ArrayList<ItemEntry> entries = null;
+        try {
+            entries = ItemEntry.readEntriesFromFile("inventory_items.txt");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
+        if(entries != null) {
+            for(ItemEntry entry : entries) {
+                InventoryItem.createInventoryItem(inventory_mgnt, entry.getProduct(), entry.getQuantity(), entry.getPrice());
+            }
         }
 
         Sales sales = new Sales(inventory_mgnt);
@@ -65,11 +72,15 @@ public class App {
           boolean stationarySale = sales.makeSale(stationaryItem, quantity);
           System.out.printf("Sold 3 Stationary items: %-5s%n", stationarySale);
 
-          productInfo = productInfoMap.get("Star Wars");
-          InventoryItem soldItem = inventory_mgnt.getItem(productInfo);
-          quantity = 4;
-          boolean swSale = sales.makeSale(soldItem, quantity);
-          System.out.printf("Sold 4 Star Wars items: %-5s%n", swSale);
+          try {
+            productInfo = productInfoMap.get("Star Wars");
+            InventoryItem soldItem = inventory_mgnt.getItem(productInfo);
+            quantity = 4;
+            boolean swSale = sales.makeSale(soldItem, quantity);
+            System.out.printf("Sold 4 Star Wars items: %-5s%n", swSale);
+          } catch (Exception e) {
+            System.out.println("Error: This item does not exist");
+          }
 
           try {
             productInfo = productInfoMap.get("Nonexistent Product");

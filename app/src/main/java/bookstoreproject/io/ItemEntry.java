@@ -16,14 +16,18 @@ public class ItemEntry {
         this.price = price;
     }
     
-    public static ArrayList<ItemEntry> readEntriesFromFile(String filename) {
+    public static ArrayList<ItemEntry> readEntriesFromFile(String filename) throws Exception {
         ArrayList<ItemEntry> entries = new ArrayList<>();
-        
+
         try (Scanner scanner = new Scanner(new File(filename))) {
             while(scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] parts = line.split(",");
                 
+                // Throw exception if line does not have 3 parts
+                if(parts.length !=3) {
+                    throw new ArithmeticException("Error: Invalid data format in entry file.");
+                }
                 
                 String product = parts[0].trim();
                 if (product.startsWith("\"") && product.endsWith("\"")) {
@@ -36,7 +40,7 @@ public class ItemEntry {
             }
         }catch (IOException e) {
             System.err.println("Error reading from the file: " + e.getMessage());
-        } 
+        }
         return entries;
     }
 
