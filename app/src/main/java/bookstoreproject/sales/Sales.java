@@ -14,11 +14,15 @@ public class Sales {
         boolean isAvailable = inventory.isAvailable(item, quantity);
 
         if (isAvailable) {
-            inventory.decrementQuantity(item, quantity);
+            try {
+                inventory.decrementQuantity(item, quantity);
+                SalesCounter.updateTotalSales(price * quantity);
+                SalesCounter.updateTotalUnits(quantity);
+            } catch (ArithmeticException e) {
+                System.out.println(e.getMessage());
+                return false;
+            }
             
-            // Update Sales Counter (assuming it's a static class)
-            SalesCounter.updateTotalSales(price * quantity);
-            SalesCounter.updateTotalUnits(quantity);
             return true;
         }
 
